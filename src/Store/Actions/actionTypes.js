@@ -1,0 +1,5 @@
+const ADD_PLACE = 'ADD_PLACE';
+const DELETE_PLACE = 'DELETE_PLACE';
+const TRY_AUTH = 'TRY_AUTH';
+
+export { ADD_PLACE, DELETE_PLACE, TRY_AUTH };
