@@ -20,7 +20,8 @@ class SharePlace extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            textValue: ''
+            textValue: '',
+            image: null
         }
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
     }
@@ -41,7 +42,12 @@ class SharePlace extends Component {
     }
 
     placeAddHandler = () => {
-        this.props.onAddPlace(this.state.textValue);
+        this.props.onAddPlace(this.state.textValue, this.state.image);
+    }
+
+    handleImagePicker = (image) => {
+        if (!image) return;
+        this.setState({ image });
     }
 
     render() {
@@ -53,7 +59,7 @@ class SharePlace extends Component {
                             <HeadingOne>Share A Place with Us.</HeadingOne>
                         </FontWrapper>
                     </View>
-                    <PickImage />
+                    <PickImage imageHandler={this.handleImagePicker}/>
                     <PickLocation />
                     <PlaceInput   
                         textValue={this.state.textValue}
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddPlace: (placeName) => dispatch(addPlace(placeName))
+        onAddPlace: (placeName, imageUri) => dispatch(addPlace(placeName, imageUri))
     }
 }
 

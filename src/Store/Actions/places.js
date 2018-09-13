@@ -3,10 +3,11 @@ import {
     DELETE_PLACE
 } from './actionTypes';
 
-const addPlace = (placeName) => {
+const addPlace = (placeName, imageUri) => {
     return {
         type: ADD_PLACE,
-        placeName: placeName
+        placeName: placeName,
+        imageUri
     }
 };
 
